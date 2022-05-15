@@ -1,18 +1,12 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as prismic from '@prismicio/client';
-import { HttpRequestLike } from '@prismicio/client';
-import { enableAutoPreviews } from '@prismicio/next';
 
-export interface PrismicConfig {
-  req?: HttpRequestLike;
-}
+export function getPrismicClient(req?: unknown) {
+  const client = prismic.createClient(process.env.PRISMIC_API_ENDPOINT, {
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+  });
 
-export function getPrismicClient(config: PrismicConfig): prismic.Client {
-  const client = prismic.createClient(process.env.PRISMIC_API_ENDPOINT);
-
-  enableAutoPreviews({
-    client,
-    req: config.req,
-  })
+  client.enableAutoPreviewsFromReq(req);
 
   return client;
 }

@@ -1,1 +1,35 @@
-// TODO
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.post {
+  width: 100vw;
+  margin: 0 auto;
+
+  .banner {
+    object-fit: contain;
+  }
+
+  .postContent {
+    max-width: 700px;
+    margin: 0 auto;
+
+    h1, h2 {
+      color: var(--heading);
+    }
+
+    span {
+      color: var(--body);
+    }
+
+    a {
+      color: var(--highlight);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
